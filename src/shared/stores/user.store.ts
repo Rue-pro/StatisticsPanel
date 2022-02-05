@@ -1,5 +1,5 @@
-import { action, makeObservable, observable, runInAction } from "mobx";
-import { getUserPostsCount, getUsers } from "../api";
+import { makeAutoObservable, runInAction } from "mobx";
+import { getUsers } from "../api";
 import { User } from "../api/types";
 
 interface IUserStore {
@@ -9,25 +9,16 @@ interface IUserStore {
 }
 
 class UserStore implements IUserStore {
+  isLoading = false;
+  users: User[] = [];
+  amount = 0;
+
   constructor() {
-    makeObservable(this);
-  }
-  @observable private _isLoading = false;
-  @observable private _users: User[] = [];
-  @observable private _amount = 0;
-
-  get isLoading(): boolean {
-    return this._isLoading;
-  }
-  get users(): User[] {
-    return this._users;
-  }
-  get amount(): number {
-    return this._amount;
+    makeAutoObservable(this);
   }
 
-  @action getUsers(page: number): Promise<void> {
-    this._isLoading = true;
+  getUsers(page: number): Promise<void> {
+    this.isLoading = true;
     return getUsers(page)
       .then((data) => {
         if (data === null) {
@@ -35,27 +26,15 @@ class UserStore implements IUserStore {
           return;
         }
         runInAction(() => {
-          this._users.push(...data.users);
-          this._amount = data.amount;
+          this.users.push(...data.users);
+          this.amount = data.amount;
         });
       })
       .finally(() => {
         runInAction(() => {
-          this._isLoading = false;
+          this.isLoading = false;
         });
       });
-  }
-
-  @action getUserPostsCount(index: number) {
-    return getUserPostsCount(this._users[index].id).then((data) => {
-      if (data === null) {
-        alert("Server error");
-        return;
-      }
-      runInAction(() => {
-        this._users[index].postsCount = data;
-      });
-    });
   }
 }
 
