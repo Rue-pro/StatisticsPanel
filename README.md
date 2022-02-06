@@ -6,6 +6,7 @@
   - Styled-Components
   - React hooks
   - TypeScript;
+  - Material-UI
 - I mastered:
   - react-virtualized
   - mobx
