@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 import styled from 'styled-components';
+import StatisticsPage from '../../pages/statistic';
 import {
   colors,
   FOOTER_HEIGHT,
@@ -11,7 +12,9 @@ import Container from '../../shared/ui/container';
 const Main: React.FC = () => {
   return (
     <main>
-      <ContainerStyled>Main</ContainerStyled>
+      <ContainerStyled>
+        <StatisticsPage />
+      </ContainerStyled>
     </main>
   );
 };
