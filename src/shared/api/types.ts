@@ -14,5 +14,4 @@ export type User = {
   email: string;
   gender: Gender;
   status: Status;
-  postsCount: number | null;
 };
