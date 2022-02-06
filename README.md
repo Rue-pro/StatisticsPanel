@@ -1,4 +1,4 @@
-# Statistics panel for monitor user activity
+# Statistics panel for monitoring user activity
 
 - This app was created for "Brave developers" company test task;
 - I consolidated knowledge of working with:
