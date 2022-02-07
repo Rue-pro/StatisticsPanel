@@ -1,12 +1,6 @@
-export enum Gender {
-  male,
-  female,
-}
+type Gender = 'male' | 'female';
 
-export enum Status {
-  active,
-  inactive,
-}
+type Status = 'active' | 'inactive';
 
 export type User = {
   id: string;

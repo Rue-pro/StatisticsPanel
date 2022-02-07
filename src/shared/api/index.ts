@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { POSTS_URL, USERS_URL } from './constants';
-import { Gender, Status, User } from './types';
+import { User } from './types';
 
 type Users = Promise<{ users: User[]; amount: number } | null>;
 
@@ -10,12 +10,12 @@ export function getUsers(page: number): Users {
     .then((json) => {
       return {
         users: json.data.map(
-          (user: any): User => ({
+          (user: User): User => ({
             id: user?.id ?? uuidv4(),
             name: user?.name ?? '',
             email: user?.email ?? '',
-            gender: user?.gender === 'female' ? Gender.female : Gender.male,
-            status: user?.status === 'active' ? Status.active : Status.inactive,
+            gender: user?.gender ?? 'male',
+            status: user?.status ?? 'inactive',
           })
         ),
         amount: json.meta.pagination?.total ?? 0,
