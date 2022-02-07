@@ -27,7 +27,6 @@ const Row: React.FC<Props> = (props) => {
   return (
     <DataContainer style={style}>
       <StyledCell>{index}</StyledCell>
-      <StyledCell>{data.id} &nbsp;</StyledCell>
       <StyledCell>{data.name}</StyledCell>
 
       <StyledCell>
@@ -54,7 +53,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 const DataContainer = styled(TableRow)`
   && {
     display: grid;
-    grid-template-columns: 50px 50px 1fr 1.5fr 100px 100px;
+    grid-template-columns: 50px 1fr 1.5fr 100px 100px;
     box-sizing: border-box;
   }
 `;

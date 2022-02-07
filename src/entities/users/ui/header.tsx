@@ -9,7 +9,6 @@ const Header: React.FC = () => {
   return (
     <DataContainer>
       <Cell>№</Cell>
-      <Cell>ID</Cell>
       <Cell>Name</Cell>
       <Cell>Email</Cell>
       <Cell>Gender</Cell>
@@ -25,7 +24,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 const DataContainer = styled(TableRow)`
   && {
     display: grid;
-    grid-template-columns: 50px 50px 1fr 1.5fr 100px 118px;
+    grid-template-columns: 50px 1fr 1.5fr 100px 118px;
     box-sizing: border-box;
     background-color: ${colors.gray_light};
     border-radius: 16px 16px 0 0;
