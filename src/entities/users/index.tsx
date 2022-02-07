@@ -13,7 +13,7 @@ import Row from './ui/row';
 const Users: React.FC = () => {
   const { isLoading, users, amount } = userStore;
   const [page, setPage] = useState(1);
-
+  console.log(isLoading);
   useEffect(() => {
     userStore.getUsers(page);
   }, []);
@@ -62,6 +62,7 @@ const Users: React.FC = () => {
           />
         )}
       </InfiniteLoader>
+      {isLoading && <Spinner />}
     </>
   );
 };
