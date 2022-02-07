@@ -1,6 +1,6 @@
-import { makeAutoObservable, runInAction } from "mobx";
-import { getUsers } from "../api";
-import { User } from "../api/types";
+import { makeAutoObservable, runInAction } from 'mobx';
+import { getUsers } from '../api';
+import { User } from '../api/types';
 
 interface IUserStore {
   isLoading: boolean;
@@ -10,7 +10,9 @@ interface IUserStore {
 
 class UserStore implements IUserStore {
   isLoading = false;
+
   users: User[] = [];
+
   amount = 0;
 
   constructor() {
@@ -22,7 +24,7 @@ class UserStore implements IUserStore {
     return getUsers(page)
       .then((data) => {
         if (data === null) {
-          alert("Server error");
+          alert('Server error');
           return;
         }
         runInAction(() => {
